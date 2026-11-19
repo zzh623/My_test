@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>博客首页</title>
+    <style>
+        /*公共样式*/
+
+        body,
+        div,
+        ul,
+        ol,
+        li,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        p,
+        a,
+        img,
+        span {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        ul,
+        ol {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        body {
+            background: #80c7db url(90304_top.jpg) no-repeat center -60px;
+            font-family: "微软雅黑", PingFangSC-Semibold;
+            font-size: 12px;
+            color: #333;
+        }
+        /* 页头样式 */
+
+        #header {
+            width: 1000px;
+            margin: 0px auto;
+        }
+        /*导航条样式*/
+
+        #nav {
+            width: 1000px;
+            height: 40px;
+            margin: 0px auto;
+        }
+
+        #nav ul li {
+            width: 90px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            float: left;
+        }
+
+        #nav ul li a {
+            display: block;
+            width: 90px;
+            height: 40px;
+            color: #333;
+            font-size: 14px;
+            font-weight: bold;
+            text-shadow: 1px 1px 1px #FFFFFF;
+        }
+
+        #nav ul li a:hover {
+            background-color: #f60;
+            border-radius: 10px;
+            color: #fff;
+            text-shadow: 2px 2px 1px #333333;
+        }
+        /*页头中标题样式 */
+
+        #header h1 {
+            width: 100%;
+            height: 36px;
+            line-height: 36px;
+            font-size: 22px;
+            font-weight: normal;
+            text-shadow: 1px 1px 2px #FFFFFF;
+            margin-top: 50px;
+        }
+        /*页头中描述文本样式 */
+
+        #header p {
+            width: 100%;
+            height: 22px;
+            line-height: 22px;
+            font-size: 12px;
+            color: #fff;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.50);
+            margin: 19px 0px 25px 0px;
+        }
+        /*主体内容样式*/
+
+        #main {
+            width: 1000px;
+            margin: 10px auto;
+            overflow: hidden;
+        }
+        /* 博文列表样式 */
+
+        #article {
+            width: 760px;
+            float: left;
+            background-color: #E5F3F7;
+            border-radius: 10px;
+            padding-bottom: 50px;
+            /*设置外边距：离底部50px*/
+        }
+        /* 博文列表的盒子模型样式 */
+
+        #article .abox {
+            width: 720px;
+            /* 博文卡片宽度:720px */
+            height: 214px;
+            /* 博文卡片高度:214px */
+            margin: 0px auto;
+            /* 外边距：卡片居中 */
+        }
+        /* 博文列表盒子模型头部样式 */
+
+        #article .abox .aheader {
+            width: 100%;
+            /* 宽度:100% */
+            height: 50px;
+            /* 高度:50px */
+            line-height: 50px;
+            /* 行高:50px */
+        }
+
+        #article .abox .aheader span {
+            float: right;
+            /* 右浮动 */
+            font-size: 12px;
+            /* 字体大小:12px */
+            color: #333;
+            /* 文字颜色:#333 */
+            text-align: right;
+            /* 文字右对齐 */
+        }
+
+        #article .abox .aheader h2 {
+            width: 500px;
+            font-size: 14px;
+            color: #333;
+            text-shadow: 2px 2px 2px #FFFFFF;
+            padding-left: 20px;
+            background: url(import.gif) no-repeat left center;
+        }
+
+        #article .abox .abody {
+            width: 100%;
+            height: 164px;
+        }
+
+        #article .abox .abody img {
+            width: 250px;
+            height: 164px;
+        }
+
+        #article .abox .abody .content {
+            width: 455px;
+            height: 164px;
+            float: right;
+            font-size: 12px;
+            line-height: 22px;
+            color: #333;
+            position: relative;
+        }
+
+        #article .abox .abody .content p {
+            margin-bottom: 4px;
+        }
+        /*阅读按钮样式*/
+
+        #article .abox .abody .content a.more {
+            display: block;
+            width: 60px;
+            height: 32px;
+            line-height: 32px;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 600;
+            color: #fff;
+            background-color: #f60;
+            border-radius: 10px;
+            position: absolute;
+            right: 0px;
+            bottom: 0px;
+        }
+        /*侧边栏样式 */
+
+        #aside {
+            width: 200px;
+            float: right;
+        }
+        /* 侧边栏列表框样式 */
+
+        #aside .list-box {
+            width: 100%;
+        }
+        /* 侧边栏标题样式 */
+
+        #aside .list-box h2 {
+            width: 100%;
+            height: 42px;
+            line-height: 42px;
+            font-size: 14px;
+            color: #2F5711;
+        }
+        /* 侧边栏列表样式 */
+
+        #aside .list-box ul {
+            list-style: none;
+            width: 100%;
+            padding: 10px 0px;
+        }
+        /* 侧边栏列表项样式 */
+
+        #aside .list-box ul li {
+            height: 22px;
+            line-height: 22px;
+        }
+        /* 列表链接样式 */
+
+        #aside .list-box ul li a {
+            display: block;
+            width: 200px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: 12px;
+            color: #FFFFFF;
+            text-shadow: 1px 1px 1px rgba(0, 102, 204, 0.50);
+            font-weight: 600;
+        }
+        /* 侧边栏鼠标悬停样式 */
+
+        #aside .list-box ul li a:hover {
+            color: #FF6600;
+            text-shadow: 1px 1px 1px #FFFFFF;
+        }
+        /*页脚样式 */
+
+        #footer {
+            width: 1000px;
+            height: 50px;
+            margin: 0px auto;
+            line-height: 50px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 页面头部(页头) -->
+    <div id="header">
+        <h1>陌上花开淡香随</h1>
+        <p>如果没有为陌上悄然伫立并为陌上风情所陶醉的人，那么花开也寂寞，风情也苍白...</p>
+    </div>
+    <!--页面导航条-->
+    <div id="nav">
+        <ul>
+            <li><a href="#">博客首页</a></li>
+            <li><a href="#">慢生活</a></li>
+            <li><a href="#">程序人生</a></li>
+            <li><a href="#">经典美文</a></li>
+            <li><a href="#">作品展示</a></li>
+            <li><a href="#">留言板</a></li>
+        </ul>
+    </div>
+    <!-- 页面主体内容区 -->
+    <div id="main">
+        <div id="article">
+            <!-- 第一篇博文卡片 -->
+            <div class="abox">
+                <div class="aheader">
+                    <span>2021-05-20</span>
+                    <h2>女孩都有浪漫的小情怀</h2>
+                </div>
+                <div class="abody">
+                    <img src="2011714152744924.jpg" alt="">
+                    <div class="content">
+                        <p>女孩都有着浪漫的小情怀，对于求婚更是抱着满满的浪漫期待，也希望在求婚那一天对方可以给自己一个最浪漫的求婚词。</p>
+                        <p>you are the apple of my eyes.</p>
+                        <p>你是我这辈子最珍贵的人。请让我永远守护在你身边，我一定将你当成掌心的珍宝，一辈子悉心呵护。你，愿意嫁给我吗？</p>
+                        <a href="#" class="more">阅读&gt;&gt;</a>
+                    </div>
+                </div>
+            </div>
+            <!-- 第二篇博文卡片 -->
+            <div class="abox">
+                <div class="aheader">
+                    <span>2021-05-20</span>
+                    <h2>也许下个路口就会遇见希望</h2>
+                </div>
+                <div class="abody">
+                    <img src="2011713203720633.jpg" alt="">
+                    <div class="content">
+                        <p>爱和恨，从来就没有单独存在过，一直是一起存在的，只不过是某个阶段中，爱比恨多了一点儿，所以看见了爱，模糊了恨；或者恨比爱多了一点儿，所以看见了恨，模糊了爱，而我们，就都在这些被模糊了情感中，最终模糊了自己。</p>
+                        <p>如果世上不存在对等的爱，那就让我爱多一些吧。</p>
+                        <p>想你的时候，把你的名字写在手心，摊开是想念，握紧是幸福。幸福就是简简单单的依靠，就是手牵手的温柔。</p>
+                        <a href="#" class="more">阅读&gt;&gt;</a>
+                    </div>
+                </div>
+            </div>
+            <!-- 第三篇博文卡片 -->
+            <div class="abox">
+                <div class="aheader">
+                    <span>2021-05-20</span>
+                    <h2>6月毕业季，祝福送给你</h2>
+                </div>
+                <div class="abody">
+                    <img src="2011713195450617.jpg" alt="">
+                    <div class="content">
+                        <p>一天天的相聚如在眼前，一夜夜的奋斗有你陪伴，一次次的欢笑你我共享，一回回的困难你帮我解决。一千多个日夜，你我的情谊深厚弥坚。离别的汽笛已经鸣响，分别就在这迷人的六月。愿你别后宏图大展，梦想实现，我们将重逢在美好的明天！</p>
+                        <p>知识的浪潮依然在我们脑海涌动，昂扬的斗志依然在我们世界驻扎，相知的情意依然在我们的心田飘荡，离别的号角却已在我们的耳边奏响…</p>
+                        <a href="#" class="more">阅读&gt;&gt;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 侧边栏 -->
+        <div id="aside">
+            <div class="list-box">
+                <h2>博客分类</h2>
+                <ul>
+                    <li><a href="#">慢生活(3)</a></li>
+                    <li><a href="#">程序人生(25)</a></li>
+                    <li><a href="#">经典美文(39)</a></li>
+                </ul>
+            </div>
+            <div class="list-box">
+                <h2>近期文章</h2>
+                <ul>
+                    <li><a href="#">女孩都有浪漫的小情怀</a></li>
+                    <li><a href="#">也许下个路口就会遇见希望</a></li>
+                    <li><a href="#">6月毕业季，祝福送给你</a></li>
+                    <li><a href="#">生活常有缺席的-可搞笑从来不缺席</a></li>
+                    <li><a href="#" title="为了一个不存在的梦，执念了那么多年">为了一个不存在的梦，执念了那么多年</a></li>
+                    <li><a href="#">妹妹，明天你就要嫁人啦</a></li>
+                </ul>
+            </div>
+            <div class="list-box">
+                <h2>文章归档</h2>
+                <ul>
+                    <li><a href="#">2021年 三月</a></li>
+                    <li><a href="#">2021年 四月</a></li>
+                    <li><a href="#">2021年 六月</a></li>
+                </ul>
+            </div>
+            <div class="list-box">
+                <h2>友情链接</h2>
+                <ul>
+                    <li><a href="#">个人博客</a></li>
+                    <li><a href="#">百度</a></li>
+                    <li><a href="#">Google</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--页面底部（页脚） -->
+    <div id="footer">
+        <p>个人博客网站版权所有</p>
+    </div>
+</body>
+
+</html>
